@@ -1,0 +1,32 @@
+#2nd qn answer
+#Binary search tree
+class treenode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+def sortedArrayToBST(nums, left, right):
+    if left > right:
+        return None
+    
+    mid = (left + right) // 2
+    root = treenode(nums[mid])
+    
+    root.left = sortedArrayToBST(nums, left, mid - 1)
+    root.right = sortedArrayToBST(nums, mid + 1, right)
+    
+    return root
+def inorderTraversal(root):
+    if root:
+        inorderTraversal(root.left)
+        print(root.val, end=" ")
+        inorderTraversal(root.right)
+        
+nums = [-10, -3, 0, 5, 9]
+size = len(nums)
+root = sortedArrayToBST(nums, 0, size - 1)
+
+print("Inorder Traversal:", end=" ")
+inorderTraversal(root)
+
+
