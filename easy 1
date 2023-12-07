@@ -1,34 +1,14 @@
-#include <stdio.h>
-#include <string.h>
+def Length_of_last_word(s):
+    s = s.strip()
+    last_space_index = s.rfind(' ')
 
-int lengthOfLastWord(char* s) {
-    int len = strlen(s);
-    int count = 0;
+   
+    last_word = s[last_space_index + 1:] if last_space_index != -1 else s
+    return len(last_word)
 
-    for(int i = len - 1; i >= 0; i--) {
-        if(s[i] != ' ') {
-            count++;
-        } else if(count > 0) {
-            break;
-        }
-    }
-
-    return count;
-}
-
-int main() {
-    char s[] = "Hello World";
-    printf("%d\n", lengthOfLastWord(s));
-
-    char t[] = "   fly me   to   the moon  ";
-    printf("%d\n", lengthOfLastWord(t));
-
-    char u[] = "luffy is still joyboy";
-    printf("%d\n", lengthOfLastWord(u));
-
-    return 0;
-}
-
+print(Length_of_last_word("Hello World")) 
+print(Length_of_last_word("   fly me   to   the moon  "))  
+print(Length_of_last_word("luffy is still joyboy")) 
 
 
 
