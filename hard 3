@@ -1,0 +1,25 @@
+#hard 3
+ 
+def count_digit_one(n):
+    count = 0
+    factor = 1  
+     while n // factor > 0:
+        cur_digit = (n // factor) % 10
+        high_digits = n // (factor * 10)
+        low_digits = n % factor
+
+        if cur_digit == 0:
+            count += high_digits * factor
+        elif cur_digit == 1:
+            count += high_digits * factor + low_digits + 1
+        else:
+            count += (high_digits + 1) * factor
+
+        factor *= 10
+     return count
+n1 = 13
+result1 = count_digit_one(n1)
+print(f"Input: n = {n1}\nOutput: {result1}")
+n2 = 0
+result2 = count_digit_one(n2)
+print(f"\nInput: n = {n2}\nOutput: {result2}")
